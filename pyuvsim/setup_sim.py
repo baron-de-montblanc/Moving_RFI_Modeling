@@ -116,6 +116,7 @@ def create_sim_setup_files(
     obspar_template,
     setup_path,
     time_array,
+    time_res,
     ra_array,
     dec_array,
     label,
@@ -142,6 +143,7 @@ def create_sim_setup_files(
             telescope configuration and array layout files.
         time_array (array-like): Observation start times expressed as Julian
             Dates. Must contain one value per trajectory sample.
+        time_res (float): Time resolution in seconds
         ra_array (astropy.units.Quantity): Right ascension coordinates for
             the simulated point source.
         dec_array (astropy.units.Quantity): Declination coordinates for the
@@ -196,6 +198,7 @@ def create_sim_setup_files(
         obs["filing"]["outfile_name"] = os.path.join(run_dir, f"run{pdx}.uvh5")
         obs["sources"]["catalog"] = os.path.join(cat_dir, f"cat{pdx}.txt")
         obs["time"]["start_time"] = float(t)
+        obs["time"]["integration_time"] = float(time_res)
 
         obs["telescope"]["array_layout"] = os.path.join(setup_path, "layout_phase1.csv")
         obs["telescope"]["telescope_config_name"] = os.path.join(
@@ -328,5 +331,5 @@ if __name__ == "__main__":
 
     print(f"Generating catalog and obsparam files... (saving to: {setup_path})")
     create_sim_setup_files(
-        obspar_template, setup_path, time_array, traj_ra, traj_dec, label
+        obspar_template, setup_path, time_array, time_res, traj_ra, traj_dec, label
     )
