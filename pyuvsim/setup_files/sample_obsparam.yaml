@@ -1,0 +1,25 @@
+filing:
+  outdir: .
+  outfile_name: ''
+  outfile_prefix: ''
+freq:
+  Nfreqs: 1
+  channel_width: 40000.0
+  start_freq: 175000000.0
+ordering:
+  blt_order:
+  - time
+  - baseline
+  conjugation_convention: ant1<ant2
+select:
+  ant_str: cross
+sources:
+  catalog: ''
+  filetype: text
+telescope:
+  array_layout: ''
+  telescope_config_name: ''
+time:
+  Ntimes: 1
+  integration_time: 2.0
+  start_time: ''
